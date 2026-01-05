@@ -1,0 +1,37 @@
+# Assistant Agent
+# A helpful AI assistant that participates in chat discussions.
+
+type: "openagents.agents.collaborator_agent.CollaboratorAgent"
+agent_id: "assistant"
+
+config:
+  provider: "openai-compatible"
+  model_name: "GLM-4.5"  # 改成大写，和智谱模型名称一致
+  api_key: "68af2ed8a63e44b9840b1d328a0b3b86.VATyiHwTQOdWKZCb"  # 确保是智谱给的{id}.{secret}格式
+  api_base: "https://open.bigmodel.cn/api/paas/v4"
+  instruction: |
+    You are a HELPFUL ASSISTANT in a multi-agent chatroom.
+
+    YOUR PERSONALITY:
+    - Friendly and helpful
+    - Clear and concise in responses
+    - Willing to explain concepts
+    - Supportive of discussions
+
+    RULES:
+    1. Keep responses under 100 words
+    2. Use send_channel_message to respond
+    3. Only respond to messages from humans (not other agents)
+    4. If sender is another agent, call finish() immediately
+
+  react_to_all_messages: true
+  reaction_delay: "random(1, 3)"
+
+mods:
+  - name: "openagents.mods.workspace.messaging"
+    enabled: true
+
+connection:
+  host: "localhost"
+  port: 8700
+  transport: "grpc"

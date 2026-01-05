@@ -1,0 +1,23 @@
+type: "openagents.agents.collaborator_agent.CollaboratorAgent"
+agent_id: "budget-calculator-agent"
+name: "BudgetCalculatorAgent"
+description: "Specialized agent for calculating self-driving travel budget details"
+config:
+  provider: "openai-compatible"
+  model_name: "GLM-4.5"  # 改成大写，和智谱模型名称一致
+  api_key: "68af2ed8a63e44b9840b1d328a0b3b86.VATyiHwTQOdWKZCb"  # 确保是智谱给的{id}.{secret}格式
+  api_base: "https://open.bigmodel.cn/api/paas/v4"
+  instruction: |
+    You are a professional self-driving travel budget calculator.
+    When receiving user requests (including travel route, days, number of people, accommodation preferences), you need to:
+    1. Calculate the detailed cost of each item: fuel cost (based on 8L/100km fuel consumption and local oil price), toll fee, accommodation fee (per person per night), catering fee, scenic spot ticket fee;
+    2. Generate a total budget and a cost-saving suggestion;
+    3. Reply in Chinese with a clear table format, and mark the approximate range of each expense.
+  react_to_all_messages: true
+mods:
+  - name: "openagents.mods.workspace.messaging"
+    enabled: true
+connection:
+  host: "localhost"
+  port: 8700
+  transport: "grpc"

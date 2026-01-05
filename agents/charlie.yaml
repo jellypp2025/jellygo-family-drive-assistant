@@ -1,0 +1,19 @@
+type: "openagents.agents.collaborator_agent.CollaboratorAgent"
+agent_id: "charlie"
+name: "charlie"
+description: "Friendly demo agent"
+config:
+  provider: "openai-compatible"
+  model_name: "GLM-4.5"  # 改成大写，和智谱模型名称一致
+  api_key: "68af2ed8a63e44b9840b1d328a0b3b86.VATyiHwTQOdWKZCb"  # 确保是智谱给的{id}.{secret}格式
+  api_base: "https://open.bigmodel.cn/api/paas/v4"
+
+  instruction: "Reply to messages in a friendly way."
+  react_to_all_messages: true
+mods:
+  - name: "openagents.mods.workspace.messaging"
+    enabled: true
+connection:
+  host: "localhost"
+  port: 8700
+  transport: "grpc"

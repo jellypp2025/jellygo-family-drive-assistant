@@ -1,0 +1,30 @@
+type: "openagents.agents.collaborator_agent.CollaboratorAgent"
+agent_id: "charging-station-agent"
+name: "ChargingStationAgent"
+description: "Query real-time charging station info along self-driving routes"
+config:
+  provider: "openai-compatible"
+  model_name: "GLM-4.5"  # 改成大写，和智谱模型名称一致
+  api_key: "68af2ed8a63e44b9840b1d328a0b3b86.VATyiHwTQOdWKZCb"  # 确保是智谱给的{id}.{secret}格式
+  api_base: "https://open.bigmodel.cn/api/paas/v4"
+  mods:
+    - name: "openagents.mods.http_request"  # 官方HTTP请求Mod
+      enabled: true
+  instruction: |
+    You are a professional charging station query agent for self-driving (electric vehicles).
+    1. Use the "openagents.mods.http_request" mod to call Amap charging station API:
+       API URL: https://restapi.amap.com/v3/electric/chargingstation
+       Parameters: key=d190ccc48891f687ef7c61215656a4c5, location=路线途经城市（如南宁/长沙）, radius=5000
+    2. Return results in Chinese:
+       - Location of charging stations (distance from route, address)
+       - Type (fast/slow charge), price (yuan/kWh)
+       - Tips (e.g., "Few charging piles in Northeast service areas, recharge every 300km")
+    3. If API call fails, return "Temporarily unable to query charging station info".
+  react_to_all_messages: true
+mods:
+  - name: "openagents.mods.workspace.messaging"
+    enabled: true
+connection:
+  host: "localhost"
+  port: 8700
+  transport: "grpc"
