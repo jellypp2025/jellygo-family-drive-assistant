@@ -12,7 +12,7 @@
 ## 技术架构
 - **依赖工具**
   - OpenAgents 版本：v0.2.0
-  - 技术栈：Python 3.9+、OpenAgents SDK、大语言模型（GPT-4.1）
+  - 技术栈：Python 3.9+、OpenAgents SDK、大语言模型（GLM-4.5）
 - **Agent Network 设计思路**
   采用「主Agent统筹+专项Agent分工」模式：以 `RoadTripMainAgent` 为核心调度中枢，调用8个专项Agent完成需求解析、规划、核算等工作，各Agent通过OpenAgents网络实现自主协作与冲突协调。
 - **核心流程**
@@ -36,4 +36,5 @@
 1. 克隆本仓库：
    ```bash
    git clone https://github.com/jellypp2025/jellygo-family-drive-assistant.git
+
 
