@@ -3,7 +3,7 @@
 
 
 ## 项目概述
-- **Network ID**：jellygo-family-drive-assistant-001
+- **Network ID**：jellygo-family-drive-assistant
 - **一句话简介**：通过8个AI Agent协同，一键生成「带娃+新能源车」场景下的自驾行程、预算、补能、安全全方案
 - **目标用户**：亲子家庭自驾用户、新能源车长途自驾用户
 - **核心场景**：家庭自驾前全方案规划、自驾中动态行程/补能调整
@@ -36,3 +36,4 @@
 1. 克隆本仓库：
    ```bash
    git clone https://github.com/jellypp2025/jellygo-family-drive-assistant.git
+
